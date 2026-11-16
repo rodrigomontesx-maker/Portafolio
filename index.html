@@ -6,148 +6,164 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Rodrigo Montes · Portafolio</title>
 <meta name="description" content="Rodrigo Montes Dioses. Datos, IA y producto.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:Anton;src:url(fonts/anton.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Inter;src:url(fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
 :root{--cream:#F2ECE4;--sand:#DDD4C8;--card:#FBF8F4;--ink:#15130F;--soft:#6B655D;--pad:clamp(20px,3.6vw,52px);--gap:clamp(40px,5vw,72px)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px}
 img{display:block;max-width:100%;height:auto}
 figure{margin:0}
-.d{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;line-height:.86;margin:0}
+.d{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;line-height:.88;margin:0}
+br.m{display:none}
+section{scroll-margin-top:56px}
 
-.top{position:sticky;top:0;z-index:5;background:rgba(242,236,228,.92);backdrop-filter:blur(8px)}
+.top{position:sticky;top:0;z-index:5;background:rgba(242,236,228,.94);backdrop-filter:blur(8px)}
 .top .in{height:56px;display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500;padding:0 var(--pad)}
 .top .me{font-family:Anton,sans-serif;font-size:20px;text-transform:uppercase;text-decoration:none;margin-right:auto}
 .top a{text-decoration:none}
 .top a:hover{opacity:.6}
 
-/* panel portada de cada caso */
 .panel{position:relative;min-height:min(62vh,600px);display:grid;grid-template-columns:1fr minmax(280px,400px);grid-template-rows:1fr auto;padding:var(--pad);gap:24px}
 .panel.dark{background:var(--ink);color:var(--cream)}
 .panel.sand{background:var(--sand)}
 .panel .note{grid-column:2;grid-row:1;align-self:start}
 .panel .lead{margin:0 0 12px;font-size:clamp(18px,1.5vw,21px);line-height:1.35}
-.panel .meta{margin:0;font-size:14px;opacity:.65}
-.panel h2,.panel h1{grid-column:1/-1;grid-row:2;font-size:clamp(80px,14vw,240px)}
+.panel .meta{margin:0;font-size:14px;opacity:.7}
+.panel h2{grid-column:1/-1;grid-row:2;font-size:clamp(80px,14vw,240px)}
 .panel .no{position:absolute;top:var(--pad);left:var(--pad);font-size:14px;font-weight:600;opacity:.8}
 
 /* portada */
-.hero{min-height:calc(100vh - 56px)}
-.hero h1{font-size:clamp(96px,21vw,360px)}
-.idx{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:4px}
-.idx a{display:flex;align-items:baseline;gap:14px;padding:10px 14px;border-radius:10px;background:var(--card);text-decoration:none;font-weight:600;font-size:15px;transition:background .15s}
+.hero{min-height:calc(100vh - 56px);grid-template-rows:1fr}
+.hero h1{grid-column:1;grid-row:1;align-self:end;font-size:min(15vw,28vh)}
+.hero .note{grid-column:2;grid-row:1;align-self:end}
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:20px 0 4px}
+.proof div{background:var(--ink);color:var(--cream);border-radius:10px;padding:10px 12px}
+.proof b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:34px;line-height:1}
+.proof span{font-size:13px;line-height:1.25;display:block;margin-top:4px;opacity:.85}
+.idx{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.idx a{display:flex;align-items:baseline;gap:12px;padding:10px 14px;border-radius:10px;background:var(--card);text-decoration:none;font-weight:600;font-size:15px;transition:background .15s}
 .idx a:hover{background:#fff}
-.idx a span{width:42px;flex:none;font-weight:500;color:var(--soft)}
-.idx a em{margin-left:auto;font-style:normal;font-weight:500;color:var(--soft);font-size:13px}
+.idx a span{width:50px;flex:none;white-space:nowrap;font-weight:500;color:var(--soft)}
+.idx a em{margin-left:auto;font-style:normal;font-weight:500;color:var(--soft);font-size:13px;white-space:nowrap}
 
-/* cuerpo del caso */
+/* cuerpo */
 .body{padding:var(--gap) var(--pad) calc(var(--gap)*1.4);display:grid;gap:clamp(16px,2vw,24px)}
-.result{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-bottom:clamp(8px,1.5vw,16px)}
-.result .big{margin:0;font-size:clamp(30px,3.6vw,54px);line-height:1.04;font-weight:700;letter-spacing:-.02em;max-width:18ch}
-.result .sub{margin:12px 0 0;max-width:52ch;color:#45403a}
-.tools{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:420px}
-.tool{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 10px;border-radius:20px;background:var(--card);font-size:14px;font-weight:600}
+.result{padding-bottom:clamp(4px,1vw,10px)}
+.result .big{margin:0;font-size:clamp(30px,3.6vw,54px);line-height:1.04;font-weight:700;letter-spacing:-.02em;max-width:20ch}
+.result .sub{margin:12px 0 16px;max-width:60ch;color:#45403a}
+.tools{display:flex;flex-wrap:wrap;gap:6px}
+.tool{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 10px;border-radius:20px;background:var(--card);font-size:14px;font-weight:600;white-space:nowrap}
+.tool.txt{padding:0 14px}
 .tool img{width:20px;height:20px}
-.tool .dot{width:10px;height:10px;border-radius:50%;background:var(--ink);margin:0 5px}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--sand);border-radius:16px;padding:16px}
+.chain .arr{width:20px;height:20px;opacity:.55}
 
 .shot{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 0 rgba(21,19,15,.06)}
 .shot img{width:100%}
 .shot.wine{background:#2a0f17}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1vw,14px);align-items:start}
-.pair.wide{grid-template-columns:2fr 1fr}
-.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1vw,14px)}
-.phones .shot{border-radius:24px;background:#0F1218}
+.phones{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.4vw,20px);max-width:980px}
+.phones .shot{border-radius:26px;background:#0F1218}
+.caption{margin:-8px 0 0;font-size:13px;color:var(--soft)}
 
-/* flujo */
 .flow{border-radius:16px;padding:clamp(20px,2.4vw,32px);background:var(--sand)}
 .flow.dark{background:var(--ink);color:var(--cream)}
-.flow h3{margin:0 0 18px;font-size:14px;font-weight:600;opacity:.7}
+.flow h3{margin:0 0 18px;font-size:14px;font-weight:600;opacity:.75}
 .flow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:stretch}
 .flow li:not(.sep){background:var(--card);color:var(--ink);border-radius:12px;padding:16px 16px 18px;display:flex;flex-direction:column}
+.flow li:not(.sep)>div{display:flex;flex-direction:column;flex:1}
 .flow.dark li:not(.sep){background:#24211c;color:var(--cream)}
 .flow .sep{display:flex;align-items:center;justify-content:center}
 .flow .arr{width:22px;height:22px;opacity:.55}
 .flow .n{font-family:Anton,sans-serif;font-size:40px;line-height:1;margin-bottom:10px}
 .flow b{font-size:17px}
-.flow li p{margin:4px 0 0;font-size:15px;line-height:1.4;opacity:.8}
+.flow li p{margin:4px 0 0;font-size:15px;line-height:1.4;opacity:.85}
 .mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:14px}
 .mini img{width:26px;height:26px;padding:4px;border-radius:7px;background:#fff}
 .mini span{font-size:12px;font-weight:600;padding:4px 8px;border-radius:7px;background:#fff;color:var(--ink)}
 
-/* historia */
-.story{display:grid;grid-template-columns:1fr minmax(260px,400px);gap:24px;align-items:start;margin-top:clamp(12px,2vw,24px)}
-.story blockquote{margin:0;font-size:clamp(20px,1.9vw,27px);line-height:1.3;font-weight:500;max-width:34ch}
-details summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;border-radius:22px;background:var(--ink);color:var(--cream);font-size:14px;font-weight:600}
-details summary::-webkit-details-marker{display:none}
-details summary::after{content:"+";font-size:20px;font-weight:400}
-details[open] summary::after{content:"–"}
-details{justify-self:end}
-details[open]{grid-column:1/-1;justify-self:stretch}
-.more{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);margin-top:16px}
-.more div{background:var(--card);border-radius:12px;padding:18px}
-.more h4{margin:0 0 6px;font-size:15px}
-.more p{margin:0;font-size:15px;color:#3a3530}
+.voice{margin:clamp(8px,1.5vw,18px) 0 0;font-size:clamp(20px,1.9vw,27px);line-height:1.3;font-weight:500;max-width:36ch;padding-left:18px;border-left:4px solid var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1vw,14px)}
+.cards.stack{grid-template-columns:1fr;align-content:start}
+.cards div{background:var(--card);border-radius:12px;padding:18px}
+.cards h4{margin:0 0 6px;font-size:15px}
+.cards p{margin:0;font-size:15px;color:#3a3530}
 
-/* sobre mi y contacto */
-.about .note{display:grid;gap:18px}
+.about .note{display:grid;gap:16px}
 .jobs{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px}
 .jobs li{display:flex;justify-content:space-between;gap:10px}
-.jobs li span{opacity:.55}
+.jobs li span{opacity:.6;white-space:nowrap}
+.sub-h{margin:4px 0 -4px;font-size:13px;font-weight:600;opacity:.6}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chips span{font-size:13px;padding:5px 10px;border-radius:14px;background:rgba(242,236,228,.12)}
 .contact .note{display:grid;gap:6px}
 .contact .note a{display:block;padding:12px 16px;border-radius:10px;background:var(--card);text-decoration:none;font-size:clamp(17px,1.4vw,20px);font-weight:600}
+.contact .note a.cv{background:var(--ink);color:var(--cream)}
 .contact .note a:hover{background:#fff}
+.contact .note a.cv:hover{background:#2c2925}
 footer{padding:18px var(--pad) 30px;font-size:13px;color:var(--soft)}
 
 @media (max-width:900px){
-  .top .in a:not(.me){display:none}
+  br.m{display:inline}
+  .top .in{gap:16px}
+  .top .in a.hide-m{display:none}
   .panel{grid-template-columns:1fr;min-height:auto;padding-top:64px}
   .panel .note{grid-column:1;grid-row:1}
-  .panel h2,.panel h1{grid-row:2;font-size:21vw}
-  .hero{padding-top:var(--pad)}
-  .result,.story,.pair,.pair.wide,.more{grid-template-columns:1fr}
-  .tools{justify-content:flex-start}
-  details{justify-self:start}
+  .panel h2{grid-row:2;font-size:21vw}
+  .hero{padding-top:var(--pad);grid-template-rows:auto auto;min-height:auto}
+  .hero .note{grid-column:1;grid-row:1}
+  .hero h1{grid-column:1;grid-row:2;font-size:21vw}
+  .pair{grid-template-columns:1fr !important}
+  .cards{grid-template-columns:1fr}
+  .shot.desk{display:none}
   .phones{grid-template-columns:1fr 1fr}
-  .flow ol{grid-template-columns:1fr;gap:6px}
-  .flow .sep{height:20px}.flow .sep .arr{transform:rotate(90deg)}
+  .phones .shot:nth-child(3){display:none}
+  .flow ol{grid-template-columns:1fr;gap:14px}
+  .flow .sep{display:none}
+  .flow li:not(.sep){flex-direction:row;gap:14px;padding:0;background:none !important}
+  .flow .n{font-size:30px;width:28px;flex:none;margin:0}
+  .mini{padding-top:8px}
 }
 </style>
 </head>
 <body>
 <nav class="top" aria-label="Principal"><div class="in">
   <a class="me" href="#">Rodrigo Montes</a>
-  <a href="#observatorio">Casos</a>
-  <a href="#sobre-mi">Sobre mí</a>
+  <a class="hide-m" href="#observatorio">Casos</a>
+  <a class="hide-m" href="#sobre-mi">Sobre mí</a>
   <a href="#contacto">Contacto</a>
 </div></nav>
 
 <main>
 <section class="panel hero">
   <div class="note">
-    <p class="lead">Diseño y construyo herramientas con IA que la gente usa de verdad, en una aseguradora y en mis propios proyectos.</p>
-    <p class="meta">Lima, Perú. Datos, IA y producto.</p>
+    <p class="lead">Diseño y construyo herramientas con IA que la gente usa de verdad, en Pacífico Seguros y en proyectos propios.</p>
+    <div class="proof">
+      <div><b>1</b><span>herramienta en producción</span></div>
+      <div><b>1</b><span>agente en piloto</span></div>
+      <div><b>3</b><span>productos propios</span></div>
+    </div>
     <ol class="idx">
       <li><a href="#observatorio"><span>Nº 01</span>Observatorio Pacífico<em>IA en producción</em></a></li>
       <li><a href="#agente"><span>Nº 02</span>Agente de datos<em>Copilot Studio</em></a></li>
       <li><a href="#cuydado"><span>Nº 03</span>Cuydado<em>App propia</em></a></li>
       <li><a href="#hebras"><span>Nº 04</span>Hebras<em>IA generativa</em></a></li>
-      <li><a href="#dioses"><span>Nº 05</span>DIÒSES<em>Web</em></a></li>
+      <li><a href="#dioses"><span>Nº 05</span>DIÒSES<em>Catálogo web</em></a></li>
     </ol>
   </div>
   <h1 class="d">Rodrigo<br>Montes</h1>
 </section>
 
-<section class="case" id="observatorio"><header class="panel dark"><span class="no">Nº 01 · Pacífico Seguros</span><div class="note"><p class="lead">Un radar del Fenómeno del Niño que avisa por SMS cuando algo pasa y propone qué decirles a los clientes de la zona.</p><p class="meta">En producción desde octubre 2026</p></div><h2 class="d">Observa<br>torio</h2></header><div class="body"><div class="result"><div><p class="big">Alertas automáticas para 4 áreas de Pacífico</p><p class="sub">Clientes, Marketing, Sostenibilidad y Siniestros reciben el aviso en el celular, sin tener que buscar la noticia.</p></div><div class="tools"><span class="tool"><img src="img/logos/chatgpt.svg" alt="" width="20" height="20">ChatGPT</span><span class="tool"><img src="img/logos/x.svg" alt="" width="20" height="20">X</span><span class="tool"><span class="dot" aria-hidden="true"></span>Dana Connect</span></div></div><figure class="shot "><img src="img/obs-hoy.webp" alt="Pantalla Hoy: tormenta eléctrica en Piura, mapa del Perú con los departamentos con reportes y publicaciones de X con su verificación" width="1600" height="990" loading="lazy"></figure><div class="flow dark"><h3>Cómo se automatizó</h3><ol><li><span class="n">1</span><b>Escucha</b><p>Junta avisos de SENAMHI, INDECI y COEN, noticias y publicaciones en X.</p><div class="mini"><img src="img/logos/x.svg" alt="X" title="X" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">2</span><b>Verifica</b><p>Marca cada señal como oficial, de medios, de especialista o por verificar.</p></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">3</span><b>Avisa</b><p>Cuando aparece un evento, envía una alerta por SMS con Dana Connect.</p><div class="mini"><span>Dana Connect</span></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">4</span><b>Propone</b><p>Arma un push y un correo para los clientes de la zona, listos para revisar.</p></li></ol></div><div class="pair"><figure class="shot "><img src="img/obs-propuestas.webp" alt="Propuestas: evento, detalle y una notificación push propuesta para clientes en Piura y Tumbes" width="1600" height="986" loading="lazy"></figure><figure class="shot "><img src="img/obs-alertas.webp" alt="Resumen de alertas: eventos, pronóstico por departamento, avisos en rojo y próximo comunicado ENFEN" width="1600" height="662" loading="lazy"></figure></div><div class="story"><blockquote>“Cada equipo buscaba las noticias del Niño por su lado y llegábamos tarde a avisar a los clientes. Ahora la alerta llega sola.”</blockquote><details><summary>Ver el caso completo</summary><div class="more"><div><h4>El problema</h4><p>Avisos oficiales, reportes de emergencia, noticias y publicaciones en X llegaban por canales distintos y sin verificar.</p></div><div><h4>Lo que hice</h4><p>Idea, diseño y desarrollo: el monitor, el mapa del día, las alertas por SMS y las propuestas de comunicación.</p></div><div><h4>Resultado</h4><p>En producción desde fines de octubre de 2026; envió entre 8 y 10 alertas en sus primeras semanas. Capturas con datos públicos.</p></div></div></details></div></div></section>
-<section class="case" id="agente"><header class="panel sand"><span class="no">Nº 02 · Pacífico Seguros</span><div class="note"><p class="lead">Un agente que responde en Teams cuántos clientes hay en un segmento, canal o producto.</p><p class="meta">Piloto con 8 a 10 usuarios de 4 áreas</p></div><h2 class="d">Agente<br>de datos</h2></header><div class="body"><div class="result"><div><p class="big">Consultas de 5 a 10 minutos, resueltas en una conversación</p><p class="sub">Planeamiento, Sostenibilidad, Producto y Canales dejaron de depender de que yo estuviera libre.</p></div><div class="tools"><span class="tool"><img src="img/logos/copilot.svg" alt="" width="20" height="20">Copilot Studio</span><span class="tool"><img src="img/logos/microsoft.svg" alt="" width="20" height="20">SharePoint</span><span class="tool"><img src="img/logos/microsoft.svg" alt="" width="20" height="20">Teams</span></div></div><div class="flow light"><h3>Cómo se automatizó</h3><ol><li><span class="n">1</span><b>Preguntas</b><p>Escribes en Teams, como le hablarías a una persona.</p><div class="mini"><img src="img/logos/microsoft.svg" alt="Teams" title="Teams" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">2</span><b>Busca</b><p>El agente consulta la data de cuantificación en SharePoint.</p><div class="mini"><img src="img/logos/microsoft.svg" alt="SharePoint" title="SharePoint" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">3</span><b>Responde</b><p>Te da el número con su apertura: segmento, canal o producto.</p><div class="mini"><img src="img/logos/copilot.svg" alt="Copilot Studio" title="Copilot Studio" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">4</span><b>Validado</b><p>Sus respuestas se compararon con el dashboard oficial antes de abrirlo.</p></li></ol></div><div class="story"><blockquote>“Me escribían varias veces al mes para pedirme el mismo tipo de número. Lo convertí en una conversación que no depende de mí.”</blockquote><details><summary>Ver el caso completo</summary><div class="more"><div><h4>El problema</h4><p>Cada consulta de cuantificación tomaba entre 5 y 10 minutos y esperaba a que yo estuviera libre.</p></div><div><h4>Lo que hice</h4><p>Diseñé y construí el agente en Microsoft Copilot Studio, conectado a SharePoint.</p></div><div><h4>Lo que aprendí</h4><p>Para escalarlo hacía falta conectarlo a Power BI y automatizar accesos. En una empresa grande, el cuello de botella de la IA suele ser el acceso a los datos, no el modelo.</p></div></div></details></div></div></section>
-<section class="case" id="cuydado"><header class="panel dark"><span class="no">Nº 03 · Proyecto propio</span><div class="note"><p class="lead">Una app de gastos que se llena sola: lee los correos de BCP, Yape y Plin y solo te pide la categoría.</p><p class="meta">La uso cada día, en móvil y escritorio</p></div><h2 class="d">Cuy<br>dado</h2></header><div class="body"><div class="result"><div><p class="big">Cero gastos anotados a mano</p><p class="sub">Producto, diseño y desarrollo hechos por mí, con desarrollo asistido por IA.</p></div><div class="tools"><span class="tool"><img src="img/logos/claude.svg" alt="" width="20" height="20">Claude</span><span class="tool"><img src="img/logos/firebase.svg" alt="" width="20" height="20">Firebase</span><span class="tool"><img src="img/logos/appsscript.svg" alt="" width="20" height="20">Apps Script</span><span class="tool"><img src="img/logos/gmail.svg" alt="" width="20" height="20">Gmail</span></div></div><div class="phones"><figure class="shot phone"><img src="img/cuy-mes.webp" alt="Mes: total gastado, gasto diario sin pagos fijos y mosaico de categorías" width="390" height="844" loading="lazy"></figure><figure class="shot phone"><img src="img/cuy-quefue.webp" alt="¿Qué fue este pago?: un Yape llegado del correo y las categorías" width="390" height="844" loading="lazy"></figure><figure class="shot phone"><img src="img/cuy-revisar.webp" alt="Por revisar: el pago como ticket, listo para confirmar" width="390" height="844" loading="lazy"></figure><figure class="shot phone"><img src="img/cuy-pagos.webp" alt="Pagos: el próximo pago fijo vence en 17 días" width="390" height="844" loading="lazy"></figure></div><div class="flow dark"><h3>Cómo se automatizó</h3><ol><li><span class="n">1</span><b>Pagas</b><p>Con Yape, Plin o tu tarjeta BCP, como siempre.</p></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">2</span><b>Llega el correo</b><p>Un script lee el correo de pago y crea el gasto pendiente.</p><div class="mini"><img src="img/logos/gmail.svg" alt="Gmail" title="Gmail" width="18" height="18"><img src="img/logos/appsscript.svg" alt="Apps Script" title="Apps Script" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">3</span><b>Te avisa</b><p>Una notificación push llega al instante.</p><div class="mini"><img src="img/logos/firebase.svg" alt="Firebase" title="Firebase" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">4</span><b>Un toque</b><p>Eliges la categoría y queda guardado.</p></li></ol></div><figure class="shot "><img src="img/cuy-escritorio.webp" alt="Cuydado en escritorio: tablero del mes y barra para anotar escribiendo" width="1440" height="900" loading="lazy"></figure><div class="story"><blockquote>“Me cansé de anotar gastos a mano, así que hice que se anotaran solos. La primera versión se veía hecha con IA; la rediseñé hasta que tuvo personalidad.”</blockquote><details><summary>Ver el caso completo</summary><div class="more"><div><h4>El rediseño</h4><p>Partí de referencias propias y descarté varias direcciones hasta llegar a bloques de color, una jerarquía clara y un personaje: un cuy con chullo.</p></div><div><h4>Lo que muestra</h4><p>Cuánto gastas por día sin contar los pagos fijos y en qué se fue el mes. En escritorio, un gasto se anota escribiendo "menú 15 yape".</p></div><div><h4>Nota</h4><p>Montos de ejemplo.</p></div></div></details></div></div></section>
-<section class="case" id="hebras"><header class="panel sand"><span class="no">Nº 04 · Emprendimiento propio</span><div class="note"><p class="lead">Merch hecho en Lima para estudios de pilates, gimnasios boutique y barberías de Estados Unidos.</p><p class="meta">Marca, web y contenido</p></div><h2 class="d">Hebras</h2></header><div class="body"><div class="result"><div><p class="big">Un catálogo completo sin una sola sesión de fotos</p><p class="sub">Todas las fotos de producto y de proceso se generaron con IA, conectando Claude a Higgsfield por MCP.</p></div><div class="tools"><span class="tool"><img src="img/logos/claude.svg" alt="" width="20" height="20">Claude</span><span class="tool"><img src="img/logos/chatgpt.svg" alt="" width="20" height="20">ChatGPT</span><span class="tool"><img src="img/logos/mcp.svg" alt="" width="20" height="20">MCP</span><span class="tool"><span class="dot" aria-hidden="true"></span>Higgsfield</span></div></div><figure class="shot "><img src="img/hebras-hero.webp" alt="Portada de Hebras: Merch your members actually wear, con un personaje de polera que sostiene un hilo" width="1600" height="936" loading="lazy"></figure><div class="flow light"><h3>Cómo se hizo</h3><ol><li><span class="n">1</span><b>La marca</b><p>Tono, textos y estructura de la web, trabajados con Claude y ChatGPT.</p><div class="mini"><img src="img/logos/claude.svg" alt="Claude" title="Claude" width="18" height="18"><img src="img/logos/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">2</span><b>La conexión</b><p>Claude se conecta a Higgsfield por MCP y le pide cada imagen.</p><div class="mini"><img src="img/logos/claude.svg" alt="Claude" title="Claude" width="18" height="18"><img src="img/logos/mcp.svg" alt="MCP" title="MCP" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">3</span><b>Las fotos</b><p>Higgsfield genera las prendas, el proceso y el empaque.</p><div class="mini"><span>Higgsfield</span></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">4</span><b>La web</b><p>Todo se arma en una sola página, en inglés, lista para vender.</p></li></ol></div><div class="pair"><figure class="shot "><img src="img/hebras-proceso.webp" alt="Los cuatro pasos del pedido como tarjetas con fotos generadas con IA" width="1000" height="585" loading="lazy"></figure><figure class="shot "><img src="img/hebras-lima.webp" alt="Sewn in Lima, worn across the US, con el personaje sentado sobre el número 30" width="1000" height="585" loading="lazy"></figure></div><div class="story"><blockquote>“Quería mostrar un catálogo completo antes de producir una sola prenda. Con IA lo armé sin una sesión de fotos.”</blockquote></div></div></section>
-<section class="case" id="dioses"><header class="panel dark"><span class="no">Nº 05 · Marca familiar</span><div class="note"><p class="lead">Carteras de cuero hechas a mano en Lima. Sin carrito: cada pieza se pide por WhatsApp, porque así compra la gente aquí.</p><p class="meta"><a href="https://casadioses.com" target="_blank" rel="noopener">casadioses.com</a></p></div><h2 class="d">Diòses</h2></header><div class="body"><div class="result"><div><p class="big">Una web que responde antes de que la clienta escriba</p><p class="sub">Medidas, colores, precio, plazo y forma de pago, a la vista en cada pieza.</p></div><div class="tools"><span class="tool"><img src="img/logos/whatsapp.svg" alt="" width="20" height="20">WhatsApp</span></div></div><div class="pair wide"><figure class="shot "><img src="img/dioses-hero.webp" alt="Portada de DIÒSES: piezas de cuero creadas desde cero, una por una, con una ilustración de taller en tinta" width="1600" height="1256" loading="lazy"></figure><figure class="shot wine"><img src="img/dioses-movil.webp" alt="Versión móvil con la colección por tipo de cartera" width="700" height="1206" loading="lazy"></figure></div><div class="flow light"><h3>Cómo se compra</h3><ol><li><span class="n">1</span><b>Eliges</b><p>Cada pieza muestra precio, medidas y colores.</p></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">2</span><b>Escribes</b><p>Un botón abre WhatsApp con el modelo ya elegido.</p><div class="mini"><img src="img/logos/whatsapp.svg" alt="WhatsApp" title="WhatsApp" width="18" height="18"></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">3</span><b>Se hace</b><p>Producción en 7 días útiles, con 50% de adelanto.</p></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">4</span><b>Recibes</b><p>Entrega en un punto de Lima y pagas el resto.</p></li></ol></div><figure class="shot "><img src="img/dioses-totes.webp" alt="Fichas de producto con nombre, precio, color y medidas" width="1400" height="1187" loading="lazy"></figure></div></section>
+<section class="case" id="observatorio"><header class="panel dark"><span class="no">Nº 01 · Pacífico Seguros</span><div class="note"><p class="lead">Centraliza todo lo que se publica sobre el Fenómeno del Niño, avisa por SMS cuando pasa algo y redacta qué decirles a los clientes de la zona.</p><p class="meta">En producción desde octubre 2026</p></div><h2 class="d">Observa<br class="m">torio</h2></header><div class="body"><div class="result"><p class="big">Alertas automáticas para 4 áreas de Pacífico</p><p class="sub">Clientes, Marketing, Sostenibilidad y Siniestros reciben el aviso en el celular. Envió entre 8 y 10 alertas en sus primeras semanas.</p><div class="tools"><span class="tool"><img src="img/logos/chatgpt.svg" alt="" width="20" height="20">ChatGPT</span><span class="tool"><img src="img/logos/x.svg" alt="" width="20" height="20">X</span><span class="tool txt">Dana Connect</span></div></div><figure class="shot "><img src="img/obs-hoy.webp" alt="Pantalla Hoy: tormenta eléctrica en Piura, mapa del Perú con los departamentos con reportes y publicaciones de X con su verificación" width="1600" height="990" loading="lazy"></figure><div class="flow dark"><h3>Cómo se automatizó</h3><ol><li><span class="n">1</span><div><b>Escucha</b><p>Dos modos. Reactivo: prensa y X de medios y especialistas. Preventivo: SENAMHI, INDECI y COEN.</p><div class="mini"><img src="img/logos/x.svg" alt="X" title="X" width="18" height="18"></div></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">2</span><div><b>Detecta</b><p>La IA reconoce inundaciones, huaicos o deslizamientos y los marca como reactivos para priorizarlos.</p><div class="mini"><img src="img/logos/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="18" height="18"></div></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">3</span><div><b>Resume</b><p>Centraliza, analiza y resume lo publicado. No pronostica: ordena lo que dicen las fuentes.</p><div class="mini"><img src="img/logos/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="18" height="18"></div></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">4</span><div><b>Avisa y propone</b><p>Envía un SMS con Dana Connect y redacta propuestas de push, correo, SMS, WhatsApp y redes.</p><div class="mini"><span>Dana Connect</span><img src="img/logos/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="18" height="18"></div></div></li></ol></div><div class="pair" style="grid-template-columns:1.62fr 2.42fr"><figure class="shot "><img src="img/obs-propuestas.webp" alt="Propuestas: evento, detalle y una notificación push propuesta para clientes en Piura y Tumbes" width="1600" height="986" loading="lazy"></figure><figure class="shot desk"><img src="img/obs-alertas.webp" alt="Resumen de alertas: eventos, pronóstico por departamento, avisos en rojo y próximo comunicado ENFEN" width="1600" height="662" loading="lazy"></figure></div><p class="voice">Cada equipo buscaba las noticias del Niño por su lado y llegábamos tarde a avisar a los clientes. Ahora la alerta llega sola.</p><div class="cards "><div><h4>El problema</h4><p>Avisos oficiales, reportes de emergencia, noticias y publicaciones en X llegaban por canales distintos y sin verificar.</p></div><div><h4>Lo que hice</h4><p>Idea, diseño y desarrollo: el monitor con sus dos modos, el mapa del día, las alertas por SMS y las propuestas de comunicación.</p></div><div><h4>Lo que cuidé</h4><p>Cada señal muestra si es oficial, de medios, de especialista o está por verificar. Las capturas usan datos públicos y {nombre} en lugar de clientes.</p></div></div></div></section>
+<section class="case" id="agente"><header class="panel sand"><span class="no">Nº 02 · Pacífico Seguros</span><div class="note"><p class="lead">CuantIA, un agente en Teams que responde cuántos clientes hay por periodo, línea de negocio, canal o segmento.</p><p class="meta">Piloto con 8 a 10 usuarios de 4 áreas</p></div><h2 class="d">Agente<br>de datos</h2></header><div class="body"><div class="result"><p class="big">Consultas de 5 a 10 minutos, resueltas en una conversación</p><p class="sub">Planeamiento, Sostenibilidad, Producto y Canales dejaron de depender de que yo estuviera libre.</p><div class="tools"><span class="tool"><img src="img/logos/copilot.svg" alt="" width="20" height="20">Copilot Studio</span><span class="tool txt">SharePoint</span><span class="tool txt">Teams</span></div></div><figure class="shot "><img src="img/agente-teams.webp" alt="CuantIA en Teams: se presenta, explica qué puede consultar y responde el total de clientes citando su fuente" width="1360" height="500" loading="lazy"></figure><div class="flow light"><h3>Cómo funciona</h3><ol><li><span class="n">1</span><div><b>Preguntas</b><p>En Teams, como le escribirías a una persona: "cuántos clientes tenemos en autos".</p><div class="mini"><span>Teams</span></div></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">2</span><div><b>Busca</b><p>Consulta la data de cuantificación y las definiciones en SharePoint.</p><div class="mini"><span>SharePoint</span></div></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">3</span><div><b>Responde</b><p>Da el número con su periodo, cita la fuente y enlaza al dashboard oficial.</p><div class="mini"><img src="img/logos/copilot.svg" alt="Copilot Studio" title="Copilot Studio" width="18" height="18"></div></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">4</span><div><b>Sabe su límite</b><p>Si le piden algo fuera de su alcance, lo dice y propone alternativas.</p></div></li></ol></div><div class="pair"><figure class="shot "><img src="img/agente-tabla.webp" alt="CuantIA responde una tabla por línea de negocio y, ante una pregunta fuera de su alcance, explica qué sí puede hacer" width="896" height="815" loading="lazy"></figure><div class="cards stack"><div><h4>El problema</h4><p>Cada consulta de cuantificación tomaba entre 5 y 10 minutos y esperaba a que yo estuviera libre.</p></div><div><h4>Lo que hice</h4><p>Lo diseñé y construí en Copilot Studio, conectado a SharePoint. Validé sus respuestas contra el dashboard oficial antes de abrirlo.</p></div><div><h4>Lo que aprendí</h4><p>Para escalarlo hacía falta conectarlo a Power BI y automatizar accesos. En una empresa grande, el cuello de botella de la IA suele ser el acceso a los datos, no el modelo.</p></div></div></div><p class="caption">Cifras internas difuminadas.</p><p class="voice">Me escribían varias veces al mes para pedirme el mismo tipo de número. Lo convertí en una conversación que no depende de mí.</p></div></section>
+<section class="case" id="cuydado"><header class="panel dark"><span class="no">Nº 03 · Proyecto propio</span><div class="note"><p class="lead">Una app de gastos que se llena sola: lee los correos de BCP, Yape y Plin y solo te pide la categoría.</p><p class="meta">La uso cada día, en móvil y escritorio</p></div><h2 class="d">Cuydado</h2></header><div class="body"><div class="result"><p class="big">Cero gastos anotados a mano</p><p class="sub">Producto, diseño y desarrollo hechos por mí, con desarrollo asistido por IA.</p><div class="tools"><span class="tool"><img src="img/logos/claude.svg" alt="" width="20" height="20">Claude</span><span class="tool"><img src="img/logos/firebase.svg" alt="" width="20" height="20">Firebase</span><span class="tool"><img src="img/logos/appsscript.svg" alt="" width="20" height="20">Apps Script</span><span class="tool"><img src="img/logos/gmail.svg" alt="" width="20" height="20">Gmail</span></div></div><div class="phones"><figure class="shot phone"><img src="img/cuy-mes.webp" alt="Mes: total gastado, gasto diario sin pagos fijos y mosaico de categorías" width="390" height="844" loading="lazy"></figure><figure class="shot phone"><img src="img/cuy-quefue.webp" alt="¿Qué fue este pago?: un Yape llegado del correo y las categorías" width="390" height="844" loading="lazy"></figure><figure class="shot phone"><img src="img/cuy-pagos.webp" alt="Pagos: el próximo pago fijo vence en 17 días" width="390" height="844" loading="lazy"></figure></div><div class="flow dark"><h3>Cómo se automatizó</h3><ol><li><span class="n">1</span><div><b>Pagas</b><p>Con Yape, Plin o tu tarjeta BCP, como siempre.</p></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">2</span><div><b>Llega el correo</b><p>Un script lee el correo de pago y crea el gasto pendiente.</p><div class="mini"><img src="img/logos/gmail.svg" alt="Gmail" title="Gmail" width="18" height="18"><img src="img/logos/appsscript.svg" alt="Apps Script" title="Apps Script" width="18" height="18"></div></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">3</span><div><b>Te avisa</b><p>Una notificación push llega al instante.</p><div class="mini"><img src="img/logos/firebase.svg" alt="Firebase" title="Firebase" width="18" height="18"></div></div></li><li class="sep" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li><span class="n">4</span><div><b>Un toque</b><p>Eliges la categoría y queda guardado.</p></div></li></ol></div><figure class="shot desk"><img src="img/cuy-escritorio.webp" alt="Cuydado en escritorio: tablero del mes y barra para anotar escribiendo" width="1440" height="900" loading="lazy"></figure><p class="voice">Me cansé de anotar gastos a mano, así que hice que se anotaran solos.</p><p class="caption">Montos de ejemplo.</p></div></section>
+<section class="case" id="hebras"><header class="panel sand"><span class="no">Nº 04 · Emprendimiento propio</span><div class="note"><p class="lead">Merch hecho en Lima para estudios de pilates, gimnasios boutique y barberías de Estados Unidos.</p><p class="meta">Marca, web y contenido</p></div><h2 class="d">Hebras</h2></header><div class="body"><div class="result"><p class="big">Un catálogo completo sin una sola sesión de fotos</p><p class="sub">La marca y los textos, con Claude y ChatGPT. Las fotos, generadas en Higgsfield desde Claude, conectado por MCP.</p><div class="tools"><span class="tool"><img src="img/logos/claude.svg" alt="" width="20" height="20">Claude</span><span class="tool"><img src="img/logos/chatgpt.svg" alt="" width="20" height="20">ChatGPT</span><span class="tool"><img src="img/logos/mcp.svg" alt="" width="20" height="20">MCP</span><span class="tool txt">Higgsfield</span></div></div><div class="chain"><span class="tool"><img src="img/logos/claude.svg" alt="" width="20" height="20">Claude</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tool"><img src="img/logos/mcp.svg" alt="" width="20" height="20">MCP</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tool txt">Higgsfield</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tool txt">Fotos de producto</span></div><figure class="shot "><img src="img/hebras-hero.webp" alt="Portada de Hebras: Merch your members actually wear, con un personaje de polera que sostiene un hilo" width="1600" height="936" loading="lazy"></figure><div class="pair"><figure class="shot "><img src="img/hebras-proceso.webp" alt="Los cuatro pasos del pedido como tarjetas con fotos generadas con IA" width="1000" height="585" loading="lazy"></figure><figure class="shot desk"><img src="img/hebras-lima.webp" alt="Sewn in Lima, worn across the US, con el personaje sentado sobre el número 30" width="1000" height="585" loading="lazy"></figure></div><p class="voice">Quería mostrar un catálogo completo antes de producir una sola prenda. Con IA lo armé sin una sesión de fotos.</p></div></section>
+<section class="case" id="dioses"><header class="panel dark"><span class="no">Nº 05 · El emprendimiento de mi mamá</span><div class="note"><p class="lead">Un catálogo web para que las clientas de mi mamá vean todo lo que hace: carteras de cuero hechas a mano en Lima, con precio, medidas y colores.</p><p class="meta"><a href="https://casadioses.com" target="_blank" rel="noopener">casadioses.com</a></p></div><h2 class="d">Diòses</h2></header><div class="body"><div class="result"><p class="big">Todo su catálogo a la vista, con pedido directo a WhatsApp</p><p class="sub">Hecho con Claude. Cada pieza abre una conversación de WhatsApp con el modelo ya elegido.</p><div class="tools"><span class="tool"><img src="img/logos/claude.svg" alt="" width="20" height="20">Claude</span><span class="tool"><img src="img/logos/whatsapp.svg" alt="" width="20" height="20">WhatsApp</span></div></div><div class="pair" style="grid-template-columns:1.27fr .58fr"><figure class="shot "><img src="img/dioses-hero.webp" alt="Portada de DIÒSES: piezas de cuero creadas desde cero, una por una, con una ilustración de taller en tinta" width="1600" height="1256" loading="lazy"></figure><figure class="shot wine"><img src="img/dioses-movil.webp" alt="Versión móvil con la colección por tipo de cartera" width="700" height="1206" loading="lazy"></figure></div><p class="voice">Mi mamá necesitaba que sus clientas pudieran ver todo lo que hace antes de escribirle.</p></div></section>
 
 <section class="panel dark about" id="sobre-mi">
   <div class="note">
@@ -157,15 +173,20 @@ footer{padding:18px var(--pad) 30px;font-size:13px;color:var(--soft)}
       <li>Grupo Pana, CX Analyst <span>2022 – 2024</span></li>
       <li>Entel Perú, Data Analyst <span>2022</span></li>
       <li>Havas Media Group, Data Assistant <span>2020 – 2022</span></li>
-      <li>PUCP, Publicidad <span>2022</span></li>
+    </ul>
+    <p class="sub-h">Formación</p>
+    <ul class="jobs">
+      <li>PUCP, Bachiller en Publicidad <span>2022</span></li>
+      <li>DMC Perú, Python for Analytics <span>2023</span></li>
     </ul>
     <div class="chips"><span>Claude</span><span>ChatGPT</span><span>Gemini</span><span>Copilot Studio</span><span>Higgsfield</span><span>MCP</span><span>SQL</span><span>Python</span><span>Power BI</span><span>Looker Studio</span><span>Firebase</span><span>Illustrator</span></div>
   </div>
-  <h2 class="d">Sobre<br>mí</h2>
+  <h2 class="d">Sobre mí</h2>
 </section>
 
 <section class="panel sand contact" id="contacto">
   <div class="note">
+    <a class="cv" href="RodrigoMontes_CV.pdf" target="_blank" rel="noopener">Descargar CV (PDF)</a>
     <a href="mailto:rodrigo.montes@pucp.pe">rodrigo.montes@pucp.pe</a>
     <a href="https://www.linkedin.com/in/rodrigomontesdioses/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="tel:+51961900317">+51 961 900 317</a>
