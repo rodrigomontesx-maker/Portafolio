@@ -41,6 +41,8 @@ section{scroll-margin-top:56px}
 .hero h1{grid-column:1;grid-row:1;align-self:end;font-size:min(15vw,28vh)}
 .hero .note{grid-column:2;grid-row:1;align-self:end}
 .hero .lead{margin-bottom:20px}
+.hero .me{grid-column:1;grid-row:1;align-self:start;margin:0;width:clamp(150px,14vw,230px);border-radius:12px;overflow:hidden}
+.hero .me img{width:100%}
 .idx{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .idx a{display:flex;align-items:baseline;gap:12px;padding:10px 14px;border-radius:10px;background:var(--card);text-decoration:none;font-weight:600;font-size:15px;transition:background .15s}
 .idx a:hover{background:#fff}
@@ -97,9 +99,10 @@ footer{padding:18px var(--pad) 30px;font-size:13px;color:var(--soft)}
   .panel{grid-template-columns:1fr;min-height:auto;padding-top:64px}
   .panel .note{grid-column:1;grid-row:1}
   .panel h2{grid-row:2;font-size:21vw}
-  .hero{padding-top:var(--pad);grid-template-rows:auto auto;min-height:auto}
-  .hero .note{grid-column:1;grid-row:1}
+  .hero{padding-top:var(--pad);grid-template-rows:auto auto auto;min-height:auto}
+  .hero .note{grid-column:1;grid-row:3}
   .hero h1{grid-column:1;grid-row:2;font-size:21vw}
+  .hero .me{grid-column:1;grid-row:1;width:120px}
   .body{grid-template-columns:1fr}
   .text{position:static}
   .two,.two.dioses{grid-template-columns:1fr}
@@ -131,6 +134,7 @@ footer{padding:18px var(--pad) 30px;font-size:13px;color:var(--soft)}
       <li><a href="#dioses"><span>Nº 05</span>DIÒSES<em>Catálogo web</em></a></li>
     </ol>
   </div>
+  <figure class="me"><img src="img/rodrigo.webp" alt="Rodrigo Montes" width="640" height="800"></figure>
   <h1 class="d">Rodrigo<br>Montes</h1>
 </section>
 
